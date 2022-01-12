@@ -1,13 +1,11 @@
 package DAO;
 
 import Models.Seguro;
-import org.hibernate.HibernateError;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import utils.SessionFactoryUtil;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 
 
@@ -48,7 +46,7 @@ public class SeguroDAO {
         liberar();
     }
 
-    public void actualizarPSeguro(Seguro seguro) {
+    public void actualizarSeguro(Seguro seguro) {
         iniciarTransaccion();
         session.update(seguro);
         transaction.commit();
