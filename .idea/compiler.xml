@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Practica3Hibernate" />
+        <module name="hibernate_01_oscar_radek" />
       </profile>
     </annotationProcessing>
   </component>

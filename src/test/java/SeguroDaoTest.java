@@ -18,6 +18,7 @@ public class SeguroDaoTest {
     @Test
     @DisplayName("Introduir nuevo seguro")
     public void introducirSeguro() {
+
         Seguro seguroExistente = new Seguro("test01", "oscar", "gonzalez", "Strozzi",
                 20, 0, "N", 0, Timestamp.valueOf("2021-05-02 04:04:05"), "Epic");
 
@@ -56,6 +57,16 @@ public class SeguroDaoTest {
         seguroDao.actualizarSeguro(seguro);
         Seguro buscar = seguroDao.buscar(seguro.getIdSeguro());
         Assertions.assertEquals(buscar,seguro,"No coincide.");
+
+    }
+
+    @Test
+    @DisplayName("Comprobar si es mayor de edad")
+    public void testMayorEdad () {
+        Seguro buscar1 = seguroDao.buscar(777);
+        Seguro buscar2 = seguroDao.buscar(778);
+        Assertions.assertTrue(buscar1.isMayorEdad(),"Debe devolver true, ya que es mayor de edad");
+        Assertions.assertFalse(buscar2.isMayorEdad(),"Debe devolver false, ya que es menor de edad");
 
     }
 }

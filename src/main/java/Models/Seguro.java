@@ -16,6 +16,7 @@ public class Seguro implements Serializable {
     private Integer numHijos;
     private Timestamp fechaCreacion;
     private String tipoSeguro;
+    private Boolean mayorEdad;
 
     public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Integer sexo, String casado, Integer numHijos, Timestamp fechaCreacion, String tipoSeguro) {
         this.idSeguro = idSeguro;
@@ -29,9 +30,12 @@ public class Seguro implements Serializable {
         this.numHijos = numHijos;
         this.fechaCreacion = fechaCreacion;
         this.tipoSeguro = tipoSeguro;
+        this.mayorEdad = edad >= 18;
+
     }
 
     public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Integer sexo, String casado, Integer numHijos, Timestamp fechaCreacion, String tipoSeguro) {
+
         this.nif = nif;
         this.nombre = nombre;
         this.ape1 = ape1;
@@ -42,10 +46,20 @@ public class Seguro implements Serializable {
         this.numHijos = numHijos;
         this.fechaCreacion = fechaCreacion;
         this.tipoSeguro = tipoSeguro;
+        this.mayorEdad = edad >= 18;
+
     }
 
     public Seguro() {
 
+    }
+
+    public Boolean isMayorEdad() {
+        return mayorEdad;
+    }
+
+    public void setMayorEdad(Boolean mayorEdad) {
+        this.mayorEdad=edad >= 18;
     }
 
     public int getIdSeguro() {
@@ -150,6 +164,7 @@ public class Seguro implements Serializable {
                 ", numHijos=" + numHijos +
                 ", fechaCreacion=" + fechaCreacion +
                 ", tipoSeguro='" + tipoSeguro + '\'' +
+                ", esMayorEdad= " + mayorEdad +
                 '}';
     }
 

@@ -4,6 +4,7 @@ import Models.Seguro;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.SessionFactoryUtil;
 
 import java.sql.SQLException;
@@ -63,6 +64,7 @@ public class SeguroDAO {
         liberar();
         return seguro;
     }
+
 
     private void iniciarTransaccion() {
         session = sessionFactory.openSession();

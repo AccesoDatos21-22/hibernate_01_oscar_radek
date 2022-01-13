@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         SeguroDAO seguroDAO = new SeguroDAO();
 //        seguroDAO.insertarSeguro(new Seguro("prueba", "oscar", "Gonzalez", "Strozzi", 10, 0, "N", 0, new Timestamp(new Date().getTime()), "Epico"));
-        System.out.println(seguroDAO.buscar(8).toString());
+        System.out.println(seguroDAO.buscar(1));
 //        seguroDAO.actualizarPSeguro(new Seguro(8,"prueba 2", "3", "3", "Strozzi3", 3, 3, "3", 13, new Timestamp(new Date().getTime()), "Super"));
     }
 }

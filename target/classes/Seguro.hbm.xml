@@ -16,5 +16,6 @@
         <property name="numHijos" column="numHijos"/>
         <property name="fechaCreacion" column="fechaCreacion"/>
         <property name="tipoSeguro" column="tipoSeguro"/>
+        <property name="mayorEdad" column="mayorEdad"/>
     </class>
 </hibernate-mapping>
