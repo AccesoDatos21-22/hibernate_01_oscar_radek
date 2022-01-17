@@ -11,11 +11,20 @@
         <property name="ape1" column="ape1"/>
         <property name="ape2" column="ape2"/>
         <property name="edad" column="edad"/>
-        <property name="sexo" column="sexo"/>
-        <property name="casado" column="casado"/>
+        <property name="sexo" column="sexo">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">Models.Sexo</param>
+            </type>
+        </property>
+        <property name="casado" column="casado" type="yes_no"/>
         <property name="numHijos" column="numHijos"/>
         <property name="fechaCreacion" column="fechaCreacion"/>
-        <property name="tipoSeguro" column="tipoSeguro"/>
+        <property name="tipoSeguro" column="tipoSeguro">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">Models.TipoSeguro</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
         <property name="mayorEdad" column="mayorEdad"/>
     </class>
 </hibernate-mapping>

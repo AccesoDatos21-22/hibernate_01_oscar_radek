@@ -11,14 +11,14 @@ public class Seguro implements Serializable {
     private String ape1;
     private String ape2;
     private Integer edad;
-    private Integer sexo;
-    private String casado;
+    private Sexo sexo;
+    private Boolean casado;
     private Integer numHijos;
     private Timestamp fechaCreacion;
-    private String tipoSeguro;
+    private TipoSeguro tipoSeguro;
     private Boolean mayorEdad;
 
-    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Integer sexo, String casado, Integer numHijos, Timestamp fechaCreacion, String tipoSeguro) {
+    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro) {
         this.idSeguro = idSeguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -34,7 +34,7 @@ public class Seguro implements Serializable {
 
     }
 
-    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Integer sexo, String casado, Integer numHijos, Timestamp fechaCreacion, String tipoSeguro) {
+    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -110,19 +110,19 @@ public class Seguro implements Serializable {
         this.edad = edad;
     }
 
-    public Integer getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(Integer sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
-    public String getCasado() {
+    public Boolean getCasado() {
         return casado;
     }
 
-    public void setCasado(String casado) {
+    public void setCasado(Boolean casado) {
         this.casado = casado;
     }
 
@@ -142,11 +142,11 @@ public class Seguro implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getTipoSeguro() {
+    public TipoSeguro getTipoSeguro() {
         return tipoSeguro;
     }
 
-    public void setTipoSeguro(String tipoSeguro) {
+    public void setTipoSeguro(TipoSeguro tipoSeguro) {
         this.tipoSeguro = tipoSeguro;
     }
 
