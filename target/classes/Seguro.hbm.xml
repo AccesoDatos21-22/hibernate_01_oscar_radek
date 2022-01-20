@@ -26,6 +26,7 @@
             </type>
         </property>
         <property name="mayorEdad" column="mayorEdad"/>
+        <property name="fechaNacimineto" column="fechaNacimiento" type="java.sql.Date"/>
 
     </class>
 </hibernate-mapping>

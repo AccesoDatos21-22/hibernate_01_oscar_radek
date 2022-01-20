@@ -2,6 +2,7 @@ package Models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Objects;
 
 
@@ -18,8 +19,9 @@ public class Seguro implements Serializable {
     private Timestamp fechaCreacion;
     private TipoSeguro tipoSeguro;
     private Boolean mayorEdad;
+    private Date fechaNacimineto;
 
-    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro) {
+    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto) {
         this.idSeguro = idSeguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -32,9 +34,10 @@ public class Seguro implements Serializable {
         this.fechaCreacion = fechaCreacion;
         this.tipoSeguro = tipoSeguro;
         this.mayorEdad = edad >= 18;
+        this.fechaNacimineto=fechaNacimineto;
     }
 
-    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro) {
+    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -47,6 +50,7 @@ public class Seguro implements Serializable {
         this.fechaCreacion = fechaCreacion;
         this.tipoSeguro = tipoSeguro;
         this.mayorEdad = edad >= 18;
+        this.fechaNacimineto=fechaNacimiento;
 
     }
 
@@ -150,6 +154,18 @@ public class Seguro implements Serializable {
         this.tipoSeguro = tipoSeguro;
     }
 
+    public Boolean getMayorEdad() {
+        return mayorEdad;
+    }
+
+    public Date getFechaNacimineto() {
+        return fechaNacimineto;
+    }
+
+    public void setFechaNacimineto(Date fechaNacimineto) {
+        this.fechaNacimineto = fechaNacimineto;
+    }
+
     @Override
     public String toString() {
         return "Seguro{" +
@@ -160,11 +176,12 @@ public class Seguro implements Serializable {
                 ", ape2='" + ape2 + '\'' +
                 ", edad=" + edad +
                 ", sexo=" + sexo +
-                ", casado='" + casado + '\'' +
+                ", casado=" + casado +
                 ", numHijos=" + numHijos +
                 ", fechaCreacion=" + fechaCreacion +
-                ", tipoSeguro='" + tipoSeguro + '\'' +
-                ", esMayorEdad= " + mayorEdad +
+                ", tipoSeguro=" + tipoSeguro +
+                ", mayorEdad=" + mayorEdad +
+                ", fechaNacimineto=" + fechaNacimineto +
                 '}';
     }
 
