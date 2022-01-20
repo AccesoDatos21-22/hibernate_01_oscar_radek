@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+
 public class Seguro implements Serializable {
     private int idSeguro;
     private String nif;
@@ -31,7 +32,6 @@ public class Seguro implements Serializable {
         this.fechaCreacion = fechaCreacion;
         this.tipoSeguro = tipoSeguro;
         this.mayorEdad = edad >= 18;
-
     }
 
     public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro) {

@@ -26,5 +26,6 @@
             </type>
         </property>
         <property name="mayorEdad" column="mayorEdad"/>
+
     </class>
 </hibernate-mapping>
