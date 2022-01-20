@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -21,10 +22,10 @@ public class Seguro implements Serializable {
     private TipoSeguro tipoSeguro;
     private Boolean mayorEdad;
     private Date fechaNacimineto;
-
     private Time horaContacto;
+    private char[] claves;
 
-    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto, Time horaContacto) {
+    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto, Time horaContacto, char[] claves) {
         this.idSeguro = idSeguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -39,9 +40,10 @@ public class Seguro implements Serializable {
         this.mayorEdad = edad >= 18;
         this.fechaNacimineto=fechaNacimineto;
         this.horaContacto = horaContacto;
+        this.claves = claves;
     }
 
-    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento, Time horaContacto) {
+    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento, Time horaContacto, char[] claves) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -56,6 +58,7 @@ public class Seguro implements Serializable {
         this.mayorEdad = edad >= 18;
         this.fechaNacimineto=fechaNacimiento;
         this.horaContacto = horaContacto;
+        this.claves = claves;
     }
 
     public Seguro() {
@@ -178,6 +181,14 @@ public class Seguro implements Serializable {
         this.horaContacto = horaContacto;
     }
 
+    public char[] getClaves() {
+        return claves;
+    }
+
+    public void setClaves(char[] claves) {
+        this.claves = claves;
+    }
+
     @Override
     public String toString() {
         return "Seguro{" +
@@ -195,6 +206,7 @@ public class Seguro implements Serializable {
                 ", mayorEdad=" + mayorEdad +
                 ", fechaNacimineto=" + fechaNacimineto +
                 ", horaContacto=" + horaContacto +
+                ", claves=" + Arrays.toString(claves) +
                 '}';
     }
 
@@ -203,11 +215,17 @@ public class Seguro implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Seguro seguro = (Seguro) o;
-        return idSeguro == seguro.idSeguro && Objects.equals(nif, seguro.nif) && Objects.equals(nombre, seguro.nombre) && Objects.equals(ape1, seguro.ape1) && Objects.equals(ape2, seguro.ape2) && Objects.equals(edad, seguro.edad) && Objects.equals(sexo, seguro.sexo) && Objects.equals(casado, seguro.casado) && Objects.equals(numHijos, seguro.numHijos) && Objects.equals(fechaCreacion, seguro.fechaCreacion) && Objects.equals(tipoSeguro, seguro.tipoSeguro);
+        return idSeguro == seguro.idSeguro && Objects.equals(nif, seguro.nif) && Objects.equals(nombre, seguro.nombre)
+                && Objects.equals(ape1, seguro.ape1) && Objects.equals(ape2, seguro.ape2) && Objects.equals(edad, seguro.edad) && sexo == seguro.sexo
+                && Objects.equals(casado, seguro.casado) && Objects.equals(numHijos, seguro.numHijos) && Objects.equals(fechaCreacion, seguro.fechaCreacion)
+                && tipoSeguro == seguro.tipoSeguro && Objects.equals(mayorEdad, seguro.mayorEdad) && Objects.equals(fechaNacimineto, seguro.fechaNacimineto)
+                && Objects.equals(horaContacto, seguro.horaContacto) && Arrays.equals(claves, seguro.claves);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSeguro, nif, nombre, ape1, ape2, edad, sexo, casado, numHijos, fechaCreacion, tipoSeguro);
+        int result = Objects.hash(idSeguro, nif, nombre, ape1, ape2, edad, sexo, casado, numHijos, fechaCreacion, tipoSeguro, mayorEdad, fechaNacimineto, horaContacto);
+        result = 31 * result + Arrays.hashCode(claves);
+        return result;
     }
 }

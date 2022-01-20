@@ -24,7 +24,7 @@ public class SeguroDaoTest {
     public void introducirSeguro() {
 
         Seguro seguroExistente = new Seguro("test01", "oscar", "gonzalez", "Strozzi",
-                20, Sexo.Hombre, Boolean.FALSE, 0, Timestamp.valueOf("2021-05-02 04:04:05"), TipoSeguro.COCHE, Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"));
+                20, Sexo.Hombre, Boolean.FALSE, 0, Timestamp.valueOf("2021-05-02 04:04:05"), TipoSeguro.COCHE, Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"), new char[]{'a','b','c'});
         seguroDao.insertarSeguro(seguroExistente);
         Assertions.assertFalse(seguroDao.insertarSeguro(seguroExistente), "El seguro no existe, por lo que no salta falso.");
 
@@ -34,7 +34,7 @@ public class SeguroDaoTest {
     @DisplayName("Buscar un seguro")
     public void buscarSeguro() {
         Seguro seguro = new Seguro(339, "test02", "Juan", "Pepe", "Aler",
-                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"));
+                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"), new char[]{'a','b','c'});
         seguroDao.insertarSeguro(seguro);
         Assertions.assertEquals(seguro, seguroDao.buscar(339), "El seguro debe de existir antes de ejecutar el test");
     }
@@ -43,7 +43,7 @@ public class SeguroDaoTest {
     @DisplayName("Eliminar un seguro")
     public void eliminarSeguro() {
         Seguro seguro = new Seguro(338, "test02", "Juan", "Pepe", "Aler",
-                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"));
+                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"), new char[]{'a','b','c'});
         seguroDao.insertarSeguro(seguro);
         seguroDao.eliminarSeguro(seguro);
         Seguro buscar = seguroDao.buscar(54);
@@ -55,7 +55,7 @@ public class SeguroDaoTest {
     @DisplayName("Actualizar un seguro")
     public void actualizarSeguro() {
         Seguro seguro = new Seguro(337, "test03", "Alberto", "Jeimenz", "Aler",
-                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"));
+                19, Sexo.Mujer, true, 2, Timestamp.valueOf("2021-07-02 04:04:05"), TipoSeguro.MOTO,Date.valueOf("2022-02-29"), Time.valueOf("12:05:30"), new char[]{'a','b','c'});
         seguroDao.insertarSeguro(seguro);
         seguroDao.actualizarSeguro(seguro);
         Seguro buscar = seguroDao.buscar(seguro.getIdSeguro());
@@ -87,5 +87,13 @@ public class SeguroDaoTest {
         Seguro buscar=seguroDao.buscar(350);
         Time hora=Time.valueOf("12:05:30");
         Assertions.assertEquals(hora,buscar.getHoraContacto(),"La hora de contacto no coincide");
+    }
+
+    @Test
+    @DisplayName("Comprobar claves")
+    void testClaves() {
+        Seguro buscar=seguroDao.buscar(351);
+        char[] array={'a','b','c'};
+        Assertions.assertArrayEquals(array,buscar.getClaves(),"Las claves no coinciden");
     }
 }

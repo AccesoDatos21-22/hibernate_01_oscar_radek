@@ -31,6 +31,8 @@ public class SeguroDAO {
             Throwable cause = e.getCause();
             if (cause instanceof SQLException) {
                 System.out.println(cause.getMessage());
+            }else {
+                e.printStackTrace();
             }
             return false;
         }

@@ -28,6 +28,9 @@
         <property name="mayorEdad" column="mayorEdad"/>
         <property name="fechaNacimineto" column="fechaNacimiento" type="java.sql.Date"/>
         <property name="horaContacto" column="horaContacto" type="java.sql.Time"/>
+        <property name="claves">
+            <column name="claves" sql-type="blob"/>
+        </property>
 
     </class>
 </hibernate-mapping>
