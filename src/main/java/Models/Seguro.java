@@ -1,6 +1,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.sql.Date;
 import java.util.Objects;
@@ -21,7 +22,9 @@ public class Seguro implements Serializable {
     private Boolean mayorEdad;
     private Date fechaNacimineto;
 
-    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto) {
+    private Time horaContacto;
+
+    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto, Time horaContacto) {
         this.idSeguro = idSeguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -35,9 +38,10 @@ public class Seguro implements Serializable {
         this.tipoSeguro = tipoSeguro;
         this.mayorEdad = edad >= 18;
         this.fechaNacimineto=fechaNacimineto;
+        this.horaContacto = horaContacto;
     }
 
-    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento) {
+    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento, Time horaContacto) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -51,7 +55,7 @@ public class Seguro implements Serializable {
         this.tipoSeguro = tipoSeguro;
         this.mayorEdad = edad >= 18;
         this.fechaNacimineto=fechaNacimiento;
-
+        this.horaContacto = horaContacto;
     }
 
     public Seguro() {
@@ -166,6 +170,14 @@ public class Seguro implements Serializable {
         this.fechaNacimineto = fechaNacimineto;
     }
 
+    public Time getHoraContacto() {
+        return horaContacto;
+    }
+
+    public void setHoraContacto(Time horaContacto) {
+        this.horaContacto = horaContacto;
+    }
+
     @Override
     public String toString() {
         return "Seguro{" +
@@ -182,6 +194,7 @@ public class Seguro implements Serializable {
                 ", tipoSeguro=" + tipoSeguro +
                 ", mayorEdad=" + mayorEdad +
                 ", fechaNacimineto=" + fechaNacimineto +
+                ", horaContacto=" + horaContacto +
                 '}';
     }
 
