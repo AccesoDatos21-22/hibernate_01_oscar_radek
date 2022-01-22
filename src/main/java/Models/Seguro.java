@@ -24,8 +24,9 @@ public class Seguro implements Serializable {
     private Date fechaNacimineto;
     private Time horaContacto;
     private char[] claves;
+    private String comentarios;
 
-    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto, Time horaContacto, char[] claves) {
+    public Seguro(int idSeguro, String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimineto, Time horaContacto, char[] claves, String comentarios) {
         this.idSeguro = idSeguro;
         this.nif = nif;
         this.nombre = nombre;
@@ -41,9 +42,10 @@ public class Seguro implements Serializable {
         this.fechaNacimineto=fechaNacimineto;
         this.horaContacto = horaContacto;
         this.claves = claves;
+        this.comentarios = comentarios;
     }
 
-    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento, Time horaContacto, char[] claves) {
+    public Seguro(String nif, String nombre, String ape1, String ape2, Integer edad, Sexo sexo, Boolean casado, Integer numHijos, Timestamp fechaCreacion, TipoSeguro tipoSeguro, Date fechaNacimiento, Time horaContacto, char[] claves, String comentarios) {
 
         this.nif = nif;
         this.nombre = nombre;
@@ -59,6 +61,7 @@ public class Seguro implements Serializable {
         this.fechaNacimineto=fechaNacimiento;
         this.horaContacto = horaContacto;
         this.claves = claves;
+        this.comentarios = comentarios;
     }
 
     public Seguro() {
@@ -189,6 +192,14 @@ public class Seguro implements Serializable {
         this.claves = claves;
     }
 
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+
     @Override
     public String toString() {
         return "Seguro{" +
@@ -207,6 +218,7 @@ public class Seguro implements Serializable {
                 ", fechaNacimineto=" + fechaNacimineto +
                 ", horaContacto=" + horaContacto +
                 ", claves=" + Arrays.toString(claves) +
+                ", comentarios='" + comentarios + '\'' +
                 '}';
     }
 
@@ -215,16 +227,12 @@ public class Seguro implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Seguro seguro = (Seguro) o;
-        return idSeguro == seguro.idSeguro && Objects.equals(nif, seguro.nif) && Objects.equals(nombre, seguro.nombre)
-                && Objects.equals(ape1, seguro.ape1) && Objects.equals(ape2, seguro.ape2) && Objects.equals(edad, seguro.edad) && sexo == seguro.sexo
-                && Objects.equals(casado, seguro.casado) && Objects.equals(numHijos, seguro.numHijos) && Objects.equals(fechaCreacion, seguro.fechaCreacion)
-                && tipoSeguro == seguro.tipoSeguro && Objects.equals(mayorEdad, seguro.mayorEdad) && Objects.equals(fechaNacimineto, seguro.fechaNacimineto)
-                && Objects.equals(horaContacto, seguro.horaContacto) && Arrays.equals(claves, seguro.claves);
+        return idSeguro == seguro.idSeguro && Objects.equals(nif, seguro.nif) && Objects.equals(nombre, seguro.nombre) && Objects.equals(ape1, seguro.ape1) && Objects.equals(ape2, seguro.ape2) && Objects.equals(edad, seguro.edad) && sexo == seguro.sexo && Objects.equals(casado, seguro.casado) && Objects.equals(numHijos, seguro.numHijos) && Objects.equals(fechaCreacion, seguro.fechaCreacion) && tipoSeguro == seguro.tipoSeguro && Objects.equals(mayorEdad, seguro.mayorEdad) && Objects.equals(fechaNacimineto, seguro.fechaNacimineto) && Objects.equals(horaContacto, seguro.horaContacto) && Arrays.equals(claves, seguro.claves) && Objects.equals(comentarios, seguro.comentarios);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(idSeguro, nif, nombre, ape1, ape2, edad, sexo, casado, numHijos, fechaCreacion, tipoSeguro, mayorEdad, fechaNacimineto, horaContacto);
+        int result = Objects.hash(idSeguro, nif, nombre, ape1, ape2, edad, sexo, casado, numHijos, fechaCreacion, tipoSeguro, mayorEdad, fechaNacimineto, horaContacto, comentarios);
         result = 31 * result + Arrays.hashCode(claves);
         return result;
     }
